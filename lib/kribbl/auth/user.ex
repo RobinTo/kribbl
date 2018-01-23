@@ -17,9 +17,9 @@ defmodule Kribbl.Auth.User do
   @doc false
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:email, :name, :password, :is_admin])
-    |> validate_required([:email, :name, :password, :is_admin])
-    |> unique_constraint(:username)
+    |> cast(attrs, [:email, :name, :password])
+    |> validate_required([:email, :name, :password])
+    |> unique_constraint(:name)
     |> validate_length(:password, min: 5, max: 49)
     |> validate_length(:name, min: 3, max: 25)
     |> put_pass_hash()
